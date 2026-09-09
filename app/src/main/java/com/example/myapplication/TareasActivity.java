@@ -1,11 +1,15 @@
 package com.example.myapplication;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -28,6 +32,13 @@ public class TareasActivity extends AppCompatActivity {
     RadioButton rbPendiente;
     CheckBox cbUrgente;
     RecyclerView recyclerViewTareas;
+    EditText etNuevaTarea;
+    Button btnAgregarDescripcion;
+    Button btnGuardarTarea;
+
+    List<Tarea> misTareas;
+    AdaptadorEstudiante adaptador;
+    String descripcionTemporal = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,28 +52,75 @@ public class TareasActivity extends AppCompatActivity {
         rbPendiente = findViewById(R.id.rbPendiente);
         cbUrgente = findViewById(R.id.cbUrgente);
         recyclerViewTareas = findViewById(R.id.recyclerViewTareas);
+        etNuevaTarea = findViewById(R.id.etNuevaTarea);
+        btnAgregarDescripcion = findViewById(R.id.btnAgregarDescripcion);
+        btnGuardarTarea = findViewById(R.id.btnGuardarTarea);
 
         String[] categorias = {"Universidad", "Casa", "Trabajo"};
         ArrayAdapter<String> adapterSpinner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categorias);
         spinnerCategoria.setAdapter(adapterSpinner);
 
-        progressBar.setProgress(45);
-        ratingBar.setRating(3.5f);
+        progressBar.setProgress(50);
+        ratingBar.setRating(3f);
         rbPendiente.setChecked(true);
 
-        List<String> misTareas = new ArrayList<>();
-        misTareas.add("Terminar la app EasyTasks");
-        misTareas.add("Subir código a GitHub");
-        misTareas.add("Entregar evaluación en Aula Virtual");
+        misTareas = new ArrayList<>();
+        adaptador = new AdaptadorEstudiante(misTareas);
 
         recyclerViewTareas.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewTareas.setAdapter(new AdaptadorEstudiante(misTareas));
+        recyclerViewTareas.setAdapter(adaptador);
+
+        btnAgregarDescripcion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText input = new EditText(TareasActivity.this);
+                input.setMinLines(5);
+                input.setGravity(android.view.Gravity.TOP | android.view.Gravity.START);
+                input.setHint("Escribe todos los detalles de la tarea aquí...");
+
+                new AlertDialog.Builder(TareasActivity.this)
+                        .setTitle("Descripción de la tarea")
+                        .setView(input)
+                        .setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                descripcionTemporal = input.getText().toString();
+                            }
+                        })
+                        .setNegativeButton("Cancelar", null)
+                        .show();
+            }
+        });
+
+        btnGuardarTarea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nombre = etNuevaTarea.getText().toString();
+
+                if (!nombre.isEmpty()) {
+                    misTareas.add(new Tarea(nombre, descripcionTemporal));
+                    adaptador.notifyDataSetChanged();
+                    etNuevaTarea.setText("");
+                    descripcionTemporal = "";
+                }
+            }
+        });
+    }
+
+    class Tarea {
+        String nombre;
+        String descripcion;
+
+        public Tarea(String nombre, String descripcion) {
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+        }
     }
 
     class AdaptadorEstudiante extends RecyclerView.Adapter<AdaptadorEstudiante.ViewHolder> {
-        List<String> lista;
+        List<Tarea> lista;
 
-        public AdaptadorEstudiante(List<String> lista) {
+        public AdaptadorEstudiante(List<Tarea> lista) {
             this.lista = lista;
         }
 
@@ -75,7 +133,19 @@ public class TareasActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.texto.setText(lista.get(position));
+            Tarea tareaActual = lista.get(position);
+            holder.texto.setText(tareaActual.nombre);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(holder.itemView.getContext())
+                            .setTitle(tareaActual.nombre)
+                            .setMessage(tareaActual.descripcion.isEmpty() ? "Sin descripción" : tareaActual.descripcion)
+                            .setPositiveButton("OK", null)
+                            .show();
+                }
+            });
         }
 
         @Override
