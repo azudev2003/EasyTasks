@@ -147,7 +147,6 @@ public class TareasActivity extends AppCompatActivity {
     }
 
     private void ordenarTareas() {
-        // Ordenar de mayor a menor importancia (estrellas)
         java.util.Collections.sort(misTareas, new java.util.Comparator<Tarea>() {
             @Override
             public int compare(Tarea t1, Tarea t2) {

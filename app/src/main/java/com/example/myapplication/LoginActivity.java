@@ -30,12 +30,10 @@ public class LoginActivity extends AppCompatActivity {
                 String password = etPassword.getText().toString().trim();
 
                 if (correo.endsWith("@alumnos.santotomas.cl") && !password.isEmpty()) {
-                    // Credenciales correctas, ir a la bienvenida (MainActivity)
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
-                    finish(); // Cerrar el login para no volver con el botón atrás
+                    finish();
                 } else {
-                    // Credenciales incorrectas
                     Toast.makeText(LoginActivity.this, "error, correo o contraseña incorrecta", Toast.LENGTH_SHORT).show();
                 }
             }
