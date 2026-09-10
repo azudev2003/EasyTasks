@@ -59,11 +59,7 @@ public class TareasActivity extends AppCompatActivity {
         radioGroupEstado = findViewById(R.id.radioGroupEstado);
         rbPendiente = findViewById(R.id.rbPendiente);
         rbEnProceso = findViewById(R.id.rbEnProceso);
-
-        rbCompletada = new RadioButton(this);
-        rbCompletada.setText("Completada");
-        rbCompletada.setTextColor(Color.BLACK);
-        radioGroupEstado.addView(rbCompletada);
+        rbCompletada = findViewById(R.id.rbCompletada);
 
         cbUrgente = findViewById(R.id.cbUrgente);
         recyclerViewTareas = findViewById(R.id.recyclerViewTareas);
@@ -89,6 +85,7 @@ public class TareasActivity extends AppCompatActivity {
 
         misTareas = new ArrayList<>();
         cargarTareasSharedPrefs();
+        ordenarTareas(); // Ordenar al iniciar
 
         adaptador = new AdaptadorEstudiante(misTareas);
         recyclerViewTareas.setLayoutManager(new LinearLayoutManager(this));
@@ -132,7 +129,9 @@ public class TareasActivity extends AppCompatActivity {
                     }
 
                     boolean esUrgente = cbUrgente.isChecked();
-                    misTareas.add(new Tarea(nombre, descripcionTemporal, estadoSeleccionado, esUrgente));
+                    float estrellas = ratingBar.getRating();
+                    misTareas.add(new Tarea(nombre, descripcionTemporal, estadoSeleccionado, esUrgente, estrellas));
+                    ordenarTareas();
                     guardarTareasSharedPrefs();
                     adaptador.notifyDataSetChanged();
                     actualizarProgresoGeneral();
@@ -141,7 +140,18 @@ public class TareasActivity extends AppCompatActivity {
                     descripcionTemporal = "";
                     cbUrgente.setChecked(false);
                     rbPendiente.setChecked(true);
+                    ratingBar.setRating(3f);
                 }
+            }
+        });
+    }
+
+    private void ordenarTareas() {
+        // Ordenar de mayor a menor importancia (estrellas)
+        java.util.Collections.sort(misTareas, new java.util.Comparator<Tarea>() {
+            @Override
+            public int compare(Tarea t1, Tarea t2) {
+                return Float.compare(t2.importancia, t1.importancia);
             }
         });
     }
@@ -173,6 +183,7 @@ public class TareasActivity extends AppCompatActivity {
                 obj.put("descripcion", t.descripcion);
                 obj.put("estado", t.estado);
                 obj.put("urgente", t.urgente);
+                obj.put("importancia", (double) t.importancia);
                 jsonArray.put(obj);
             }
             editor.putString("lista_tareas", jsonArray.toString());
@@ -190,11 +201,16 @@ public class TareasActivity extends AppCompatActivity {
                 JSONArray jsonArray = new JSONArray(jsonString);
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject obj = jsonArray.getJSONObject(i);
+                    float imp = 3f;
+                    if (obj.has("importancia")) {
+                        imp = (float) obj.getDouble("importancia");
+                    }
                     misTareas.add(new Tarea(
                             obj.getString("nombre"),
                             obj.getString("descripcion"),
                             obj.getString("estado"),
-                            obj.getBoolean("urgente")
+                            obj.getBoolean("urgente"),
+                            imp
                     ));
                 }
             } catch (JSONException e) {
@@ -208,12 +224,14 @@ public class TareasActivity extends AppCompatActivity {
         String descripcion;
         String estado;
         boolean urgente;
+        float importancia;
 
-        public Tarea(String nombre, String descripcion, String estado, boolean urgente) {
+        public Tarea(String nombre, String descripcion, String estado, boolean urgente, float importancia) {
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.estado = estado;
             this.urgente = urgente;
+            this.importancia = importancia;
         }
     }
 
@@ -345,6 +363,7 @@ public class TareasActivity extends AppCompatActivity {
                             tarea.estado = spinnerEstado.getSelectedItem().toString();
 
                             guardarTareasSharedPrefs();
+                            ordenarTareas();
                             adaptador.notifyDataSetChanged();
                             actualizarProgresoGeneral();
                         }

@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F0F4F8"
     android:clipToPadding="false"
+    android:paddingTop="24dp"
     android:paddingBottom="24dp">
 
     <LinearLayout
@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="32dp"
             android:text="Gestión de Tareas"
             android:textColor="#2979FF"
             android:textSize="24sp"
@@ -92,15 +93,24 @@
                             android:textAllCaps="true"
                             android:letterSpacing="0.05" />
 
-                        <RatingBar
-                            android:id="@+id/ratingBar"
+                        <!-- Scale down RatingBar to fit nicely without cutting off -->
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:numStars="5"
-                            android:rating="3"
-                            android:stepSize="1"
-                            android:progressTint="#2979FF" />
+                            android:gravity="start|center_vertical">
+                            <RatingBar
+                                android:id="@+id/ratingBar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:numStars="5"
+                                android:rating="3"
+                                android:stepSize="1"
+                                android:scaleX="0.8"
+                                android:scaleY="0.8"
+                                android:transformPivotX="0dp"
+                                android:transformPivotY="16dp"
+                                android:progressTint="#2979FF" />
+                        </LinearLayout>
                     </TableRow>
                 </TableLayout>
 
@@ -161,7 +171,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <RadioButton
                         android:id="@+id/rbPendiente"
@@ -176,10 +186,17 @@
                         android:id="@+id/rbEnProceso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
                         android:textColor="#1E293B"
                         android:buttonTint="#2979FF"
                         android:text="En Proceso" />
+
+                    <RadioButton
+                        android:id="@+id/rbCompletada"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#1E293B"
+                        android:buttonTint="#2979FF"
+                        android:text="Completada" />
                 </RadioGroup>
 
                 <CheckBox
@@ -208,7 +225,7 @@
                     android:id="@+id/btnGuardarTarea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ejecutar Tarea"
+                    android:text="Agregar Tarea"
                     android:textColor="#FFFFFF"
                     android:textAllCaps="true"
                     android:letterSpacing="0.05"
