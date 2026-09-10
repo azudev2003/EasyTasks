@@ -295,7 +295,7 @@ public class TareasActivity extends AppCompatActivity {
                 super(itemView);
                 tvTitulo = itemView.findViewById(R.id.tvTituloTarea);
                 tvEstado = itemView.findViewById(R.id.tvEstadoTarea);
-                tvUrgenteBadge = itemView.findViewById(R.id.tvUrgenteBadge); // Mantén tu ID correspondiente
+                tvUrgenteBadge = itemView.findViewById(R.id.tvUrgenteBadge);
             }
         }
     }

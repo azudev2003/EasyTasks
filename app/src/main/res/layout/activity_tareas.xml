@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="#F0F4F8"
+    android:clipToPadding="false"
+    android:paddingBottom="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,160 +16,240 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="20dp"
             android:text="Gestión de Tareas"
-            android:textColor="#333333"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Progreso General"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:progress="50"
-            android:progressTint="#2196F3" />
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-
-            <TableRow>
-                <TextView
-                    android:padding="8dp"
-                    android:text="Categoría:"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-
-                <!-- Spinner modificado para texto oscuro -->
-                <Spinner
-                    android:id="@+id/spinnerCategoria"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:theme="@style/ThemeOverlay.AppCompat.Light" />
-            </TableRow>
-
-            <TableRow android:layout_marginTop="8dp">
-                <TextView
-                    android:padding="8dp"
-                    android:text="Importancia:"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:numStars="5"
-                    android:rating="3"
-                    android:stepSize="1"
-                    android:progressTint="#FFC107" />
-            </TableRow>
-        </TableLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Estado de la tarea:"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <RadioGroup
-            android:id="@+id/radioGroupEstado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/rbPendiente"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:textColor="#000000"
-                android:text="Pendiente" />
-
-            <RadioButton
-                android:id="@+id/rbEnProceso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textColor="#000000"
-                android:text="En Proceso" />
-        </RadioGroup>
-
-        <CheckBox
-            android:id="@+id/cbUrgente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:textColor="#000000"
-            android:text="Marcar tarea como Urgente" />
-
-        <EditText
-            android:id="@+id/etNuevaTarea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nombre de la tarea..."
-            android:textColorHint="#757575"
-            android:textColor="#000000"
-            android:layout_marginBottom="8dp"/>
-
-        <Button
-            android:id="@+id/btnAgregarDescripcion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Agregar Descripción (Opcional)"
-            android:layout_marginBottom="16dp"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#FF9800"/>
-
-        <Button
-            android:id="@+id/btnGuardarTarea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guardar Tarea"
-            android:layout_marginBottom="24dp"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#4CAF50"/>
+            android:textColor="#2979FF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:letterSpacing="0.1" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="#FFFFFF">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Progreso General"
+                    android:textColor="#2979FF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.05"
+                    android:layout_marginBottom="12dp"/>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:layout_marginBottom="16dp"
+                    android:progress="50"
+                    android:progressTint="#00E5FF"
+                    android:progressBackgroundTint="#E2E8F0" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TableRow android:gravity="center_vertical">
+                        <TextView
+                            android:padding="8dp"
+                            android:text="Categoría:"
+                            android:textColor="#64748B"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:letterSpacing="0.05" />
+
+                        <Spinner
+                            android:id="@+id/spinnerCategoria"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:theme="@style/ThemeOverlay.AppCompat.Light" />
+                    </TableRow>
+
+                    <TableRow android:layout_marginTop="12dp" android:gravity="center_vertical">
+                        <TextView
+                            android:padding="8dp"
+                            android:text="Importancia:"
+                            android:textColor="#64748B"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:letterSpacing="0.05" />
+
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:numStars="5"
+                            android:rating="3"
+                            android:stepSize="1"
+                            android:progressTint="#2979FF" />
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nueva Tarea"
+                    android:textColor="#2979FF"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.05"
+                    android:layout_marginBottom="16dp"/>
+
+                <EditText
+                    android:id="@+id/etNuevaTarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ingrese comando de tarea..."
+                    android:textColorHint="#94A3B8"
+                    android:textColor="#1E293B"
+                    android:textSize="14sp"
+                    android:padding="12dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estado del sistema:"
+                    android:textColor="#64748B"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.05"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupEstado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbPendiente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:textColor="#1E293B"
+                        android:buttonTint="#2979FF"
+                        android:text="Pendiente" />
+
+                    <RadioButton
+                        android:id="@+id/rbEnProceso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textColor="#1E293B"
+                        android:buttonTint="#2979FF"
+                        android:text="En Proceso" />
+                </RadioGroup>
+
+                <CheckBox
+                    android:id="@+id/cbUrgente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="#FF1744"
+                    android:buttonTint="#FF1744"
+                    android:textStyle="bold"
+                    android:text="PRIORIDAD CRÍTICA (URGENTE)" />
+
+                <Button
+                    android:id="@+id/btnAgregarDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Añadir Datos Adicionales"
+                    android:layout_marginBottom="12dp"
+                    android:textColor="#2979FF"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.05"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_button_secondary"/>
+
+                <Button
+                    android:id="@+id/btnGuardarTarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ejecutar Tarea"
+                    android:textColor="#FFFFFF"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.05"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_button_primary"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="12dp">
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="Lista de Tareas"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
+                    android:layout_marginBottom="12dp"
+                    android:text="Registro de Tareas"
+                    android:textColor="#2979FF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.05" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewTareas"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingBottom="8dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
