@@ -3,14 +3,19 @@
     android:color="#80FFFFFF">
     <item>
         <shape android:shape="rectangle">
-            <!-- Glossy Frutiger Aero Blue Gradient -->
+            <!-- Rojo Puro e Intenso -->
             <gradient
-                android:startColor="#4FC3F7"
-                android:centerColor="#03A9F4"
-                android:endColor="#0288D1"
-                android:angle="90"/>
-            <corners android:radius="24dp"/>
-            <stroke android:width="2dp" android:color="#E1F5FE"/>
+                android:startColor="#FF0000"
+                android:centerColor="#E50000"
+                android:endColor="#B71C1C"
+                android:angle="45"/>
+            <corners
+                android:topLeftRadius="32dp"
+                android:bottomRightRadius="32dp"
+                android:topRightRadius="4dp"
+                android:bottomLeftRadius="4dp"/>
+            <!-- Borde Azul para el juego de colores -->
+            <stroke android:width="2dp" android:color="#2979FF"/>
         </shape>
     </item>
 </ripple>

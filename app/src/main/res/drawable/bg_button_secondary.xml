@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="#3303A9F4">
+    android:color="#332979FF">
     <item>
         <shape android:shape="rectangle">
-            <!-- Glassy translucent fill -->
-            <solid android:color="#99FFFFFF"/>
-            <stroke android:width="2dp" android:color="#29B6F6"/>
-            <corners android:radius="24dp"/>
+            <!-- Azul translúcido -->
+            <solid android:color="#1A2979FF"/>
+            <stroke android:width="2dp" android:color="#2979FF"/>
+            <corners
+                android:topLeftRadius="4dp"
+                android:bottomRightRadius="4dp"
+                android:topRightRadius="32dp"
+                android:bottomLeftRadius="32dp"/>
         </shape>
     </item>
 </ripple>
