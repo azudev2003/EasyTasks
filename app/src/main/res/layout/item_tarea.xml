@@ -19,19 +19,16 @@
             android:id="@+id/tvTituloTarea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:letterSpacing="0.05"
-            android:textColor="#1E293B" />
+            android:textColor="#01579B" />
 
         <TextView
             android:id="@+id/tvEstadoTarea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="#64748B"
-            android:textAllCaps="true"
-            android:letterSpacing="0.05"
+            android:textSize="14sp"
+            android:textColor="#0288D1"
             android:layout_marginTop="4dp"/>
     </LinearLayout>
 
@@ -39,11 +36,10 @@
         android:id="@+id/tvUrgenteBadge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ALERTA"
-        android:textSize="10sp"
+        android:text="¡URGENTE!"
+        android:textSize="12sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
-        android:letterSpacing="0.1"
         android:background="@drawable/bg_badge_urgente"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"

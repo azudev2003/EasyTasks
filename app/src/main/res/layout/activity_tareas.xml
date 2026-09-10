@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4F8"
+    android:background="@drawable/bg_frutiger_main"
     android:clipToPadding="false"
     android:paddingTop="24dp"
     android:paddingBottom="24dp">
@@ -19,18 +19,16 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="32dp"
             android:text="Gestión de Tareas"
-            android:textColor="#2979FF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:letterSpacing="0.1" />
+            android:textColor="#01579B"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="6dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
             app:cardBackgroundColor="#FFFFFF"
             app:cardUseCompatPadding="true">
 
@@ -44,22 +42,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Progreso General"
-                    android:textColor="#2979FF"
-                    android:textSize="14sp"
+                    android:textColor="#01579B"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textAllCaps="true"
-                    android:letterSpacing="0.05"
                     android:layout_marginBottom="12dp"/>
 
                 <ProgressBar
                     android:id="@+id/progressBar"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="12dp"
+                    android:layout_height="16dp"
                     android:layout_marginBottom="16dp"
                     android:progress="50"
-                    android:progressTint="#00E5FF"
-                    android:progressBackgroundTint="#E2E8F0" />
+                    android:progressTint="#64DD17"
+                    android:progressBackgroundTint="#E1F5FE" />
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -69,11 +65,9 @@
                         <TextView
                             android:padding="8dp"
                             android:text="Categoría:"
-                            android:textColor="#64748B"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:textAllCaps="true"
-                            android:letterSpacing="0.05" />
+                            android:textColor="#0288D1"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <Spinner
                             android:id="@+id/spinnerCategoria"
@@ -87,11 +81,9 @@
                         <TextView
                             android:padding="8dp"
                             android:text="Importancia:"
-                            android:textColor="#64748B"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:textAllCaps="true"
-                            android:letterSpacing="0.05" />
+                            android:textColor="#0288D1"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
                         <!-- Scale down RatingBar to fit nicely without cutting off -->
                         <LinearLayout
@@ -109,7 +101,7 @@
                                 android:scaleY="0.8"
                                 android:transformPivotX="0dp"
                                 android:transformPivotY="16dp"
-                                android:progressTint="#2979FF" />
+                                android:progressTint="#FFC107" />
                         </LinearLayout>
                     </TableRow>
                 </TableLayout>
@@ -121,8 +113,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="6dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
             app:cardBackgroundColor="#FFFFFF"
             app:cardUseCompatPadding="true">
 
@@ -136,34 +128,30 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nueva Tarea"
-                    android:textColor="#2979FF"
-                    android:textSize="14sp"
+                    android:textColor="#01579B"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textAllCaps="true"
-                    android:letterSpacing="0.05"
                     android:layout_marginBottom="16dp"/>
 
                 <EditText
                     android:id="@+id/etNuevaTarea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Ingrese comando de tarea..."
-                    android:textColorHint="#94A3B8"
-                    android:textColor="#1E293B"
-                    android:textSize="14sp"
-                    android:padding="12dp"
+                    android:hint="¿Qué haremos hoy?"
+                    android:textColorHint="#81D4FA"
+                    android:textColor="#01579B"
+                    android:textSize="16sp"
+                    android:padding="16dp"
                     android:background="@drawable/bg_edit_text"
                     android:layout_marginBottom="16dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Estado del sistema:"
-                    android:textColor="#64748B"
-                    android:textSize="12sp"
+                    android:text="Estado inicial:"
+                    android:textColor="#0288D1"
+                    android:textSize="14sp"
                     android:textStyle="bold"
-                    android:textAllCaps="true"
-                    android:letterSpacing="0.05"
                     android:layout_marginBottom="8dp"/>
 
                 <RadioGroup
@@ -178,24 +166,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:textColor="#1E293B"
-                        android:buttonTint="#2979FF"
+                        android:textColor="#01579B"
+                        android:buttonTint="#03A9F4"
                         android:text="Pendiente" />
 
                     <RadioButton
                         android:id="@+id/rbEnProceso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#1E293B"
-                        android:buttonTint="#2979FF"
+                        android:textColor="#01579B"
+                        android:buttonTint="#03A9F4"
                         android:text="En Proceso" />
 
                     <RadioButton
                         android:id="@+id/rbCompletada"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#1E293B"
-                        android:buttonTint="#2979FF"
+                        android:textColor="#01579B"
+                        android:buttonTint="#03A9F4"
                         android:text="Completada" />
                 </RadioGroup>
 
@@ -204,31 +192,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:textColor="#FF1744"
-                    android:buttonTint="#FF1744"
+                    android:textColor="#FF6D00"
+                    android:buttonTint="#FF6D00"
                     android:textStyle="bold"
-                    android:text="PRIORIDAD CRÍTICA (URGENTE)" />
+                    android:text="¡Súper Urgente!" />
 
                 <Button
                     android:id="@+id/btnAgregarDescripcion"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Añadir Datos Adicionales"
+                    android:layout_height="50dp"
+                    android:text="Agregar Notas Extras"
                     android:layout_marginBottom="12dp"
-                    android:textColor="#2979FF"
-                    android:textAllCaps="true"
-                    android:letterSpacing="0.05"
+                    android:textColor="#03A9F4"
                     android:textStyle="bold"
                     android:background="@drawable/bg_button_secondary"/>
 
                 <Button
                     android:id="@+id/btnGuardarTarea"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:text="Agregar Tarea"
                     android:textColor="#FFFFFF"
-                    android:textAllCaps="true"
-                    android:letterSpacing="0.05"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     android:background="@drawable/bg_button_primary"/>
 
@@ -239,8 +224,8 @@
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:layout_marginBottom="8dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="6dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
             app:cardBackgroundColor="#FFFFFF"
             app:cardUseCompatPadding="true">
 
@@ -254,12 +239,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:text="Registro de Tareas"
-                    android:textColor="#2979FF"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textAllCaps="true"
-                    android:letterSpacing="0.05" />
+                    android:text="Mis Tareas Geniales"
+                    android:textColor="#01579B"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewTareas"
