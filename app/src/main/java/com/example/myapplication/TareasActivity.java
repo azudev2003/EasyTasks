@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -59,7 +60,6 @@ public class TareasActivity extends AppCompatActivity {
         rbPendiente = findViewById(R.id.rbPendiente);
         rbEnProceso = findViewById(R.id.rbEnProceso);
 
-        // Agregamos dinámicamente la opción Completada al RadioGroup si no estaba en el XML
         rbCompletada = new RadioButton(this);
         rbCompletada.setText("Completada");
         rbCompletada.setTextColor(Color.BLACK);
@@ -295,7 +295,7 @@ public class TareasActivity extends AppCompatActivity {
                 super(itemView);
                 tvTitulo = itemView.findViewById(R.id.tvTituloTarea);
                 tvEstado = itemView.findViewById(R.id.tvEstadoTarea);
-                tvUrgenteBadge = itemView.findViewById(R.id.tvUrgenteBadge);
+                tvUrgenteBadge = itemView.findViewById(R.id.tvUrgenteBadge); // Mantén tu ID correspondiente
             }
         }
     }
